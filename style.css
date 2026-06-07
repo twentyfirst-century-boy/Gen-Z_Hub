@@ -450,3 +450,13 @@ transition:0.3s;
 .back-btn:hover{
 transform:scale(1.05);
 }
+.del-btn{
+margin-top:10px;
+padding:6px 10px;
+border:none;
+border-radius:10px;
+background:#ff3b3b;
+color:white;
+cursor:pointer;
+font-size:12px;
+}
