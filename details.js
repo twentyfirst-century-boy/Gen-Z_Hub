@@ -1,34 +1,42 @@
 const container = document.getElementById("details");
 
 const params = new URLSearchParams(window.location.search);
-const id = Number(params.get("id"));
+const id = parseInt(params.get("id"));
 
-let dramas = JSON.parse(localStorage.getItem("dramas")) || [];
+let stored = JSON.parse(localStorage.getItem("dramas"));
+const dramas = stored && stored.length ? stored : window.dramas;
 
-let item = dramas.find(d => d.id === id);
+const item = dramas.find(d => d.id === id);
 
 if(!item){
-  container.innerHTML = "<h2 style='text-align:center;margin-top:50px'>❌ No Data Found</h2>";
-}
-else {
+  container.innerHTML = "<h2>Drama not found</h2>";
+} else {
   container.innerHTML = `
-  <div class="details-wrapper">
+  <div class="details-page">
 
-    <div class="details-left">
-      <img src="${item.image}">
-    </div>
+    <div class="details-container">
 
-    <div class="details-right">
+      <img src="${item.image}" />
 
-      <h1>${item.title}</h1>
+      <div class="details-info">
 
-      <p>⭐ Rating: ${item.rating}</p>
-      <p>📂 Category: ${item.category}</p>
-      <p>${item.description}</p>
+        <h1>${item.title}</h1>
 
-      <br>
+        <div class="details-meta">
+          <span class="details-badge">${item.category}</span>
+          <span class="details-badge">⭐ ${item.rating}</span>
+          <span class="details-badge">${item.year || ""}</span>
+          <span class="details-badge">${item.status || ""}</span>
+        </div>
 
-      <a href="index.html" class="back-btn">⬅ Back</a>
+        <p><b>Genre:</b> ${item.genre || "N/A"}</p>
+        <p><b>Episodes:</b> ${item.episodes || "N/A"}</p>
+
+        <p style="margin-top:15px;line-height:1.6;">
+          ${item.about || item.description}
+        </p>
+
+      </div>
 
     </div>
 
