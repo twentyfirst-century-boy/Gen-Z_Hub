@@ -1,5 +1,5 @@
 /* ===========================
-   GEN Z HUB - MAIN UI (PRO)
+   GEN Z HUB - COMPLETE STYLE
 =========================== */
 
 *{
@@ -16,7 +16,9 @@ color:#fff;
 overflow-x:hidden;
 }
 
-/* Scrollbar */
+/* ===========================
+   SCROLLBAR
+=========================== */
 ::-webkit-scrollbar{
 width:8px;
 }
@@ -30,7 +32,9 @@ background:#4f7cff;
 border-radius:20px;
 }
 
-/* Loader */
+/* ===========================
+   LOADER
+=========================== */
 #loader{
 position:fixed;
 top:0;
@@ -65,7 +69,9 @@ color:#bbb;
 100%{transform:scale(1);}
 }
 
-/* Navbar */
+/* ===========================
+   NAVBAR
+=========================== */
 .navbar{
 position:sticky;
 top:0;
@@ -81,7 +87,6 @@ flex-wrap:wrap;
 gap:10px;
 }
 
-/* Logo */
 .logo{
 display:flex;
 align-items:center;
@@ -98,7 +103,9 @@ background:linear-gradient(90deg,#4f7cff,#a855f7);
 -webkit-text-fill-color:transparent;
 }
 
-/* Search */
+/* ===========================
+   SEARCH
+=========================== */
 .search-box input{
 width:260px;
 max-width:85vw;
@@ -110,7 +117,9 @@ background:#1b2137;
 color:#fff;
 }
 
-/* Menu */
+/* ===========================
+   MENU
+=========================== */
 .menu{
 display:flex;
 gap:10px;
@@ -135,7 +144,9 @@ background:#4f7cff;
 background:linear-gradient(90deg,#4f7cff,#a855f7);
 }
 
-/* HERO */
+/* ===========================
+   HERO
+=========================== */
 .hero{
 height:75vh;
 background:
@@ -180,21 +191,19 @@ transition:.3s;
 
 .overlay button:hover{
 transform:scale(1.05);
+box-shadow:0 0 20px rgba(79,124,255,0.5);
 }
 
-/* SECTIONS */
+/* ===========================
+   SECTIONS
+=========================== */
 .section{
 padding:40px 20px;
 }
 
-.section h2{
-margin-bottom:18px;
-}
-
 /* ===========================
-   CARDS (FIXED NETFLIX STYLE)
+   CARDS
 =========================== */
-
 .cards{
 display:grid;
 grid-template-columns:repeat(2, 1fr);
@@ -211,8 +220,8 @@ box-shadow:0 10px 20px rgba(0,0,0,.3);
 }
 
 .card:hover{
-transform:translateY(-6px) scale(1.02);
-box-shadow:0 0 18px #4f7cff;
+transform:translateY(-8px) scale(1.03);
+box-shadow:0 0 22px rgba(79,124,255,0.6);
 }
 
 .card img{
@@ -230,6 +239,13 @@ font-size:18px;
 margin-bottom:8px;
 }
 
+.card-content p{
+font-size:13px;
+color:#bfc7d5;
+line-height:1.5;
+}
+
+/* BADGES */
 .rating{
 display:inline-block;
 padding:5px 10px;
@@ -247,14 +263,9 @@ font-size:12px;
 margin-left:6px;
 }
 
-.card-content p{
-font-size:13px;
-color:#cfcfcf;
-margin-top:10px;
-line-height:1.5;
-}
-
-/* FOOTER */
+/* ===========================
+   FOOTER
+=========================== */
 footer{
 padding:40px 20px;
 text-align:center;
@@ -274,7 +285,9 @@ margin-top:10px;
 color:#aaa;
 }
 
-/* BACK TO TOP */
+/* ===========================
+   BACK TO TOP
+=========================== */
 #topBtn{
 position:fixed;
 right:18px;
@@ -290,32 +303,9 @@ cursor:pointer;
 display:none;
 }
 
-/* RESPONSIVE */
-@media(max-width:768px){
-.cards{
-grid-template-columns:repeat(2, 1fr);
-gap:12px;
-}
-
-.hero{
-height:60vh;
-}
-
-.overlay h1{
-font-size:34px;
-}
-}
-
-@media(max-width:480px){
-.cards{
-grid-template-columns:repeat(1, 1fr);
-}
-}
-
 /* ===========================
    DETAILS PAGE
 =========================== */
-
 .details-page{
 padding:40px 20px;
 }
@@ -328,32 +318,9 @@ grid-template-columns:350px 1fr;
 gap:40px;
 }
 
-.details-container img{
-width:100%;
-border-radius:20px;
-}
-
-.details-info h1{
-font-size:38px;
-}
-
-.details-meta{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-margin:15px 0;
-}
-
-.details-badge{
-padding:8px 15px;
-border-radius:30px;
-background:#4f7cff;
-}
-
 /* ===========================
    ADMIN PANEL
 =========================== */
-
 body.admin-body{
 background:#0a0f1f;
 display:flex;
