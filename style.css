@@ -100,10 +100,6 @@ background:linear-gradient(90deg,#4f7cff,#a855f7);
 }
 
 /* Search */
-.search-box{
-position:relative;
-}
-
 .search-box input{
 width:280px;
 max-width:80vw;
@@ -113,14 +109,6 @@ outline:none;
 border-radius:30px;
 background:#1b2137;
 color:#fff;
-}
-
-.search-box i{
-position:absolute;
-right:15px;
-top:50%;
-transform:translateY(-50%);
-color:#999;
 }
 
 /* Menu */
@@ -205,32 +193,32 @@ margin-bottom:20px;
 }
 
 /* ===========================
-   🔥 CARDS FIX (2 PER ROW)
+   🔥 CARDS (NETFLIX STYLE FIX)
 =========================== */
 
 .cards{
 display:grid;
 grid-template-columns:repeat(2, 1fr);
-gap:18px;
+gap:20px;
+padding:10px;
 }
 
-/* Card */
 .card{
 background:#12182b;
 border-radius:18px;
 overflow:hidden;
-transition:.35s;
+transition:.3s ease;
 box-shadow:0 10px 20px rgba(0,0,0,.3);
 }
 
 .card:hover{
-transform:translateY(-8px);
+transform:translateY(-6px) scale(1.02);
 box-shadow:0 0 15px #4f7cff;
 }
 
 .card img{
 width:100%;
-height:260px;
+height:280px;
 object-fit:cover;
 }
 
@@ -363,7 +351,10 @@ border-radius:30px;
 background:#4f7cff;
 }
 
-/* ADMIN PANEL */
+/* ===========================
+   ADMIN PANEL (CLEAN)
+=========================== */
+
 body.admin-body{
 background:#0a0f1f;
 display:flex;
