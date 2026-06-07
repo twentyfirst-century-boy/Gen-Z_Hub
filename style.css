@@ -375,3 +375,78 @@ background:linear-gradient(90deg,#4f7cff,#a855f7);
 color:white;
 font-size:16px;
 }
+.details-wrapper{
+display:grid;
+grid-template-columns:350px 1fr;
+gap:30px;
+padding:40px;
+align-items:start;
+}
+
+.details-left img{
+width:100%;
+border-radius:20px;
+box-shadow:0 0 25px rgba(79,124,255,0.4);
+}
+
+.details-right h1{
+font-size:40px;
+margin-bottom:15px;
+background:linear-gradient(90deg,#4f7cff,#a855f7);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* GRID INFO BOX */
+.meta-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-bottom:20px;
+}
+
+.meta-grid div{
+background:#12182b;
+padding:10px;
+border-radius:12px;
+text-align:center;
+}
+
+/* DESCRIPTION BOX */
+.desc-box{
+background:#0f1426;
+padding:15px;
+border-radius:15px;
+margin-bottom:20px;
+}
+
+/* EXTRA GRID */
+.extra-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
+margin-bottom:20px;
+}
+
+.extra-grid div{
+background:#12182b;
+padding:10px;
+border-radius:10px;
+text-align:center;
+font-size:14px;
+}
+
+/* BACK BUTTON */
+.back-btn{
+display:inline-block;
+padding:12px 20px;
+background:linear-gradient(90deg,#4f7cff,#a855f7);
+color:white;
+text-decoration:none;
+border-radius:25px;
+transition:0.3s;
+}
+
+.back-btn:hover{
+transform:scale(1.05);
+}
