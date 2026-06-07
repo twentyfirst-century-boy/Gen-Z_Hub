@@ -1,5 +1,5 @@
 /* ===========================
-   GEN Z HUB - MAIN UI
+   GEN Z HUB - MAIN UI (PRO)
 =========================== */
 
 *{
@@ -73,25 +73,24 @@ z-index:500;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:15px 30px;
+padding:15px 25px;
 background:rgba(10,10,20,.85);
 backdrop-filter:blur(12px);
 border-bottom:1px solid rgba(255,255,255,.08);
 flex-wrap:wrap;
-gap:15px;
+gap:10px;
 }
 
+/* Logo */
 .logo{
 display:flex;
 align-items:center;
 gap:10px;
-font-size:28px;
+font-size:26px;
 font-weight:700;
 }
 
-.logo i{
-color:#4f7cff;
-}
+.logo i{ color:#4f7cff; }
 
 .logo span{
 background:linear-gradient(90deg,#4f7cff,#a855f7);
@@ -101,9 +100,9 @@ background:linear-gradient(90deg,#4f7cff,#a855f7);
 
 /* Search */
 .search-box input{
-width:280px;
-max-width:80vw;
-padding:12px 45px 12px 15px;
+width:260px;
+max-width:85vw;
+padding:12px 15px;
 border:none;
 outline:none;
 border-radius:30px;
@@ -119,7 +118,7 @@ flex-wrap:wrap;
 }
 
 .menu-btn{
-padding:9px 16px;
+padding:8px 14px;
 border:none;
 cursor:pointer;
 border-radius:30px;
@@ -151,7 +150,7 @@ text-align:center;
 }
 
 .overlay h1{
-font-size:55px;
+font-size:52px;
 font-weight:800;
 }
 
@@ -185,21 +184,21 @@ transform:scale(1.05);
 
 /* SECTIONS */
 .section{
-padding:45px 25px;
+padding:40px 20px;
 }
 
 .section h2{
-margin-bottom:20px;
+margin-bottom:18px;
 }
 
 /* ===========================
-   🔥 CARDS (NETFLIX STYLE FIX)
+   CARDS (FIXED NETFLIX STYLE)
 =========================== */
 
 .cards{
 display:grid;
 grid-template-columns:repeat(2, 1fr);
-gap:20px;
+gap:18px;
 padding:10px;
 }
 
@@ -213,12 +212,12 @@ box-shadow:0 10px 20px rgba(0,0,0,.3);
 
 .card:hover{
 transform:translateY(-6px) scale(1.02);
-box-shadow:0 0 15px #4f7cff;
+box-shadow:0 0 18px #4f7cff;
 }
 
 .card img{
 width:100%;
-height:280px;
+height:270px;
 object-fit:cover;
 }
 
@@ -264,7 +263,7 @@ margin-top:40px;
 }
 
 footer h2{
-font-size:34px;
+font-size:32px;
 background:linear-gradient(90deg,#4f7cff,#a855f7);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
@@ -275,18 +274,18 @@ margin-top:10px;
 color:#aaa;
 }
 
-/* BACK BUTTON */
+/* BACK TO TOP */
 #topBtn{
 position:fixed;
-right:20px;
-bottom:20px;
-width:50px;
-height:50px;
+right:18px;
+bottom:18px;
+width:48px;
+height:48px;
 border:none;
 border-radius:50%;
 background:linear-gradient(90deg,#4f7cff,#a855f7);
 color:white;
-font-size:18px;
+font-size:16px;
 cursor:pointer;
 display:none;
 }
@@ -303,7 +302,7 @@ height:60vh;
 }
 
 .overlay h1{
-font-size:36px;
+font-size:34px;
 }
 }
 
@@ -335,7 +334,7 @@ border-radius:20px;
 }
 
 .details-info h1{
-font-size:40px;
+font-size:38px;
 }
 
 .details-meta{
@@ -352,7 +351,7 @@ background:#4f7cff;
 }
 
 /* ===========================
-   ADMIN PANEL (CLEAN)
+   ADMIN PANEL
 =========================== */
 
 body.admin-body{
