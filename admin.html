@@ -1,23 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Gen Z Hub - Admin</title>
+
 <link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
-<body>
 
-<div class="admin-box">
+<body class="admin-body">
 
-<h1>➕ Add Drama / Movie</h1>
+<div class="admin-container">
 
-<input id="title" placeholder="Title">
-<input id="category" placeholder="Category (K-Drama, Movie, Anime)">
-<input id="rating" placeholder="Rating (9.5)">
-<input id="image" placeholder="Image URL">
-<textarea id="desc" placeholder="Description"></textarea>
+<h1>🎬 Add New Content</h1>
+<p>Fill details to add movie / drama</p>
 
-<button onclick="addDrama()">Add</button>
+<div class="form-grid">
+
+<div class="input-box">
+<input id="title" type="text" required>
+<label>Title</label>
+</div>
+
+<div class="input-box">
+<input id="category" type="text" required>
+<label>Category (Movie / K-Drama)</label>
+</div>
+
+<div class="input-box">
+<input id="rating" type="text" required>
+<label>Rating (9.5)</label>
+</div>
+
+<div class="input-box">
+<input id="image" type="text" required>
+<label>Image URL</label>
+</div>
+
+<div class="input-box textarea-box">
+<textarea id="desc" required></textarea>
+<label>Description</label>
+</div>
+
+</div>
+
+<button class="glow-btn" onclick="addDrama()">
+➕ Add to Gen Z Hub
+</button>
 
 </div>
 
