@@ -21,13 +21,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <body>
 
-<!-- Loading Screen -->
+<!-- LOADER -->
 <div id="loader">
 <h1>Gen Z Hub</h1>
 <p>Loading...</p>
 </div>
 
-<!-- Navbar -->
+<!-- NAVBAR -->
 <nav class="navbar">
 
 <div class="logo">
@@ -35,32 +35,18 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 <span>Gen Z Hub</span>
 </div>
 
+<!-- SEARCH -->
 <div class="search-box">
-
 <input type="text" id="search" placeholder="Search Movies & Dramas...">
-
 <i class="fa-solid fa-magnifying-glass"></i>
-
 </div>
 
-<!-- 🔥 NEW: ADMIN BUTTON -->
-<div style="display:flex;align-items:center;gap:10px;">
-
-<a href="admin.html">
-<button style="
-padding:8px 15px;
-border:none;
-border-radius:20px;
-background:linear-gradient(90deg,#4f7cff,#a855f7);
-color:white;
-cursor:pointer;
-">
+<!-- ADMIN BUTTON -->
+<a href="admin.html" class="add-btn">
 ➕ Add
-</button>
 </a>
 
-</div>
-
+<!-- FILTER MENU -->
 <div class="menu">
 
 <button class="menu-btn active" data-filter="all">All</button>
@@ -73,7 +59,7 @@ cursor:pointer;
 
 </nav>
 
-<!-- Hero -->
+<!-- HERO -->
 <section class="hero">
 
 <div class="overlay">
@@ -82,9 +68,7 @@ cursor:pointer;
 Welcome to <span>Gen Z Hub</span>
 </h1>
 
-<p>
-Discover Amazing Movies, Dramas & Anime
-</p>
+<p>Discover Amazing Movies, Dramas & Anime</p>
 
 <a href="#trending">
 <button>Explore Now</button>
@@ -94,48 +78,45 @@ Discover Amazing Movies, Dramas & Anime
 
 </section>
 
-<!-- Trending -->
+<!-- TRENDING -->
 <section id="trending" class="section">
 
 <div class="section-title">🔥 Trending</div>
-
 <div class="cards" id="trendingList"></div>
 
 </section>
 
-<!-- Latest -->
+<!-- LATEST -->
 <section class="section">
 
 <div class="section-title">🆕 Latest</div>
-
 <div class="cards" id="latestList"></div>
 
 </section>
 
-<!-- Top Rated -->
+<!-- TOP -->
 <section class="section">
 
 <div class="section-title">⭐ Top Rated</div>
-
 <div class="cards" id="topList"></div>
 
 </section>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer>
 
 <h2>Gen Z Hub</h2>
-
 <p>Watch • Discover • Explore</p>
 <p>Made with ❤️</p>
 
 </footer>
 
-<!-- Back To Top -->
+<!-- BACK TO TOP -->
 <button id="topBtn">
 <i class="fa-solid fa-arrow-up"></i>
 </button>
 
+<!-- SCRIPTS (IMPORTANT ORDER) -->
 <script src="data.js"></script>
 <script src="script.js"></script>
 
