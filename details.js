@@ -1,75 +1,50 @@
-/* ===========================
-   GEN Z HUB DETAILS PAGE
-=========================== */
+const container = document.getElementById("details");
 
-const container = document.getElementById("detailsContainer");
-
-/* Get ID from URL */
 const params = new URLSearchParams(window.location.search);
-const id = parseInt(params.get("id"));
+const id = Number(params.get("id"));
 
-/* Find item */
-const item = dramas.find(d => d.id === id);
+const stored = JSON.parse(localStorage.getItem("dramas")) || [];
 
-/* If not found */
+const item = stored.find(d => d.id === id);
+
 if (!item) {
-container.innerHTML = `
-<div style="text-align:center;padding:80px 20px;">
-<h1>❌ Content Not Found</h1>
-<p style="color:#aaa;margin-top:10px;">The movie or drama you are looking for does not exist.</p>
-
-<a href="index.html" style="
-display:inline-block;
-margin-top:20px;
-padding:12px 25px;
-background:linear-gradient(90deg,#4f7cff,#a855f7);
-color:#fff;
-border-radius:30px;
-text-decoration:none;
-">
-⬅ Go Back Home
-</a>
-
-</div>
-`;
+  container.innerHTML = "<h2 style='text-align:center'>Drama Not Found</h2>";
 } else {
+  container.innerHTML = `
+  
+  <div class="details-wrapper">
 
-/* Render Details */
+    <div class="details-left">
+      <img src="${item.image}" alt="${item.title}">
+    </div>
 
-container.innerHTML = `
-<div class="details-container">
+    <div class="details-right">
 
-<img src="${item.image}" alt="${item.title}">
+      <h1>${item.title}</h1>
 
-<div class="details-info">
+      <div class="meta-grid">
+        <div><b>⭐ Rating</b><p>${item.rating}</p></div>
+        <div><b>📂 Category</b><p>${item.category}</p></div>
+        <div><b>🆔 ID</b><p>${item.id}</p></div>
+      </div>
 
-<h1>${item.title}</h1>
+      <div class="desc-box">
+        <h3>Description</h3>
+        <p>${item.description}</p>
+      </div>
 
-<div class="details-meta">
+      <div class="extra-grid">
+        <div>🔥 Trending: Yes</div>
+        <div>🎬 Type: Drama / Movie</div>
+        <div>📺 Status: Available</div>
+        <div>🌟 Language: Multi</div>
+      </div>
 
-<span class="details-badge">⭐ ${item.rating}</span>
-<span class="details-badge">${item.category}</span>
-<span class="details-badge">${item.genre}</span>
-<span class="details-badge">${item.year}</span>
+      <a href="index.html" class="back-btn">⬅ Back</a>
 
-</div>
+    </div>
 
-<p>${item.description}</p>
+  </div>
 
-<div class="details-buttons">
-
-<a class="watch-btn" href="${item.watch}" target="_blank">
-▶ Watch Now
-</a>
-
-<a class="back-btn" href="index.html">
-⬅ Back Home
-</a>
-
-</div>
-
-</div>
-
-</div>
-`;
+  `;
 }
