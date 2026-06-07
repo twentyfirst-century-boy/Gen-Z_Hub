@@ -1,13 +1,15 @@
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
   setTimeout(() => {
     const loader = document.getElementById("loader");
     if (loader) {
-      loader.style.display = "none";
+      loader.style.opacity = "0";
+      setTimeout(() => loader.style.display = "none", 500);
     }
   }, 1000);
 });
+
 /* ===========================
-   GEN Z HUB - MAIN SCRIPT
+   ELEMENTS
 =========================== */
 
 const trendingList = document.getElementById("trendingList");
@@ -20,100 +22,74 @@ const filterButtons = document.querySelectorAll(".menu-btn");
 let currentFilter = "all";
 
 /* ===========================
-   LOADER
-=========================== */
-
-window.addEventListener("load", () => {
-
-setTimeout(() => {
-
-const loader = document.getElementById("loader");
-
-if(loader){
-loader.style.opacity = "0";
-setTimeout(()=> loader.style.display="none", 500);
-}
-
-},1000);
-
-});
-
-/* ===========================
    CARD HTML
 =========================== */
 
-function createCard(item){
+function createCard(item) {
+  return `
+    <div class="card" onclick="openDetails(${item.id})">
 
-return `
-<div class="card" onclick="openDetails(${item.id})">
+      <img src="${item.image}"
+        onerror="this.src='https://via.placeholder.com/300x450?text=No+Image'"
+        alt="${item.title}">
 
-<img src="${item.image}"
-onerror="this.src='https://via.placeholder.com/300x450?text=No+Image'"
-alt="${item.title}">
+      <div class="card-content">
 
-<div class="card-content">
+        <h3>${item.title}</h3>
 
-<h3>${item.title}</h3>
+        <div>
+          <span class="rating">⭐ ${item.rating}</span>
+          <span class="category">${item.category}</span>
+        </div>
 
-<div>
-<span class="rating">⭐ ${item.rating}</span>
-<span class="category">${item.category}</span>
-</div>
+        <p>${item.description.substring(0, 90)}...</p>
 
-<p>${item.description.substring(0,90)}...</p>
+        <button onclick="event.stopPropagation(); deleteDrama(${item.id})" class="del-btn">
+          🗑 Delete
+        </button>
 
-<!-- 🗑 DELETE BUTTON (ONLY IF ADMIN PAGE USES SAME SCRIPT) -->
-<button onclick="event.stopPropagation(); deleteDrama(${item.id})" class="del-btn">
-🗑 Delete
-</button>
-
-</div>
-</div>
-`;
+      </div>
+    </div>
+  `;
 }
 
 /* ===========================
-   RENDER FUNCTION
+   RENDER
 =========================== */
 
-function render(){
+function render() {
 
-if(typeof dramas === "undefined") return;
+  let dramas = JSON.parse(localStorage.getItem("dramas")) || [];
 
-let keyword = searchInput.value.toLowerCase();
+  if (!dramas.length) return;
 
-let filtered = dramas.filter(item=>{
+  let keyword = searchInput.value.toLowerCase();
 
-let matchSearch = item.title.toLowerCase().includes(keyword);
+  let filtered = dramas.filter(item => {
+    return (
+      item.title.toLowerCase().includes(keyword) &&
+      (currentFilter === "all" || item.category === currentFilter)
+    );
+  });
 
-let matchCategory =
-currentFilter === "all" || item.category === currentFilter;
+  trendingList.innerHTML = "";
+  latestList.innerHTML = "";
+  topList.innerHTML = "";
 
-return matchSearch && matchCategory;
+  filtered.slice(0, 8).forEach(item => {
+    trendingList.innerHTML += createCard(item);
+  });
 
-});
+  [...filtered].reverse().slice(0, 8).forEach(item => {
+    latestList.innerHTML += createCard(item);
+  });
 
-/* Trending */
-trendingList.innerHTML = "";
-filtered.slice(0,8).forEach(item=>{
-trendingList.innerHTML += createCard(item);
-});
-
-/* Latest */
-latestList.innerHTML = "";
-[...filtered].reverse().slice(0,8).forEach(item=>{
-latestList.innerHTML += createCard(item);
-});
-
-/* Top Rated */
-topList.innerHTML = "";
-[...filtered]
-.sort((a,b)=>parseFloat(b.rating)-parseFloat(a.rating))
-.slice(0,8)
-.forEach(item=>{
-topList.innerHTML += createCard(item);
-});
-
+  [...filtered]
+    .sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating))
+    .slice(0, 8)
+    .forEach(item => {
+      topList.innerHTML += createCard(item);
+    });
 }
 
 /* ===========================
@@ -126,45 +102,37 @@ searchInput.addEventListener("input", render);
    FILTER
 =========================== */
 
-filterButtons.forEach(btn=>{
-
-btn.addEventListener("click",()=>{
-
-filterButtons.forEach(b=>b.classList.remove("active"));
-btn.classList.add("active");
-
-currentFilter = btn.dataset.filter;
-
-render();
-
-});
-
+filterButtons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    filterButtons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentFilter = btn.dataset.filter;
+    render();
+  });
 });
 
 /* ===========================
-   DETAILS PAGE
+   DETAILS
 =========================== */
 
-function openDetails(id){
-window.location.href = `details.html?id=${id}`;
+function openDetails(id) {
+  window.location.href = `details.html?id=${id}`;
 }
 
 /* ===========================
-   DELETE FUNCTION
+   DELETE
 =========================== */
 
-function deleteDrama(id){
+function deleteDrama(id) {
+  let dramas = JSON.parse(localStorage.getItem("dramas")) || [];
 
-let dramas = JSON.parse(localStorage.getItem("dramas")) || [];
+  dramas = dramas.filter(item => item.id !== id);
 
-dramas = dramas.filter(item => item.id !== id);
+  localStorage.setItem("dramas", JSON.stringify(dramas));
 
-localStorage.setItem("dramas", JSON.stringify(dramas));
+  alert("Drama Deleted!");
 
-alert("🗑 Drama Deleted!");
-
-render();
-
+  render();
 }
 
 /* ===========================
@@ -173,23 +141,12 @@ render();
 
 const topBtn = document.getElementById("topBtn");
 
-window.addEventListener("scroll",()=>{
-
-if(window.scrollY > 300){
-topBtn.style.display = "block";
-}else{
-topBtn.style.display = "none";
-}
-
+window.addEventListener("scroll", () => {
+  topBtn.style.display = window.scrollY > 300 ? "block" : "none";
 });
 
-topBtn.addEventListener("click",()=>{
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
+topBtn.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 /* ===========================
