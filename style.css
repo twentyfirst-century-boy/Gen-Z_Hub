@@ -1,5 +1,5 @@
 /* ===========================
-   GEN Z HUB - FINAL PRO UI
+   GEN Z HUB - FINAL PRO UI (16:9 FIX)
 =========================== */
 
 *{
@@ -202,32 +202,33 @@ padding:40px 20px;
 }
 
 /* ===========================
-   CARDS (FIXED - BIG POSTER)
+   CARDS - 16:9 PERFECT FIX
 =========================== */
 .cards{
 display:grid;
 grid-template-columns:repeat(2, 1fr);
-gap:18px;
+gap:16px;
 padding:10px;
 }
 
+/* CARD */
 .card{
 background:#12182b;
-border-radius:18px;
+border-radius:16px;
 overflow:hidden;
-transition:.3s ease;
+transition:0.3s ease;
 box-shadow:0 10px 20px rgba(0,0,0,.3);
-min-height:560px;
 }
 
 .card:hover{
-transform:translateY(-8px) scale(1.03);
-box-shadow:0 0 22px rgba(79,124,255,0.6);
+transform:translateY(-6px) scale(1.02);
+box-shadow:0 0 20px rgba(79,124,255,0.5);
 }
 
+/* IMAGE FIX (MAIN PART) */
 .card img{
 width:100%;
-height:420px;
+aspect-ratio:16/9;
 object-fit:cover;
 display:block;
 transition:0.4s ease;
@@ -237,6 +238,7 @@ transition:0.4s ease;
 transform:scale(1.05);
 }
 
+/* CONTENT */
 .card-content{
 padding:12px;
 }
