@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gen Z Hub - Admin</title>
+<title>Gen Z Hub Admin</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -17,41 +17,48 @@
 
 <div class="admin-container">
 
-<h1>🎬 Add New Content</h1>
-<p>Fill details to add movie / drama</p>
+<h1>🎬 Add New Drama</h1>
+<p>Add complete drama information</p>
 
 <div class="form-grid">
 
-<div class="input-box">
-<input id="title" type="text" required>
-<label>Title</label>
-</div>
+<input id="title" placeholder="Drama Title">
 
-<div class="input-box">
-<input id="category" type="text" required>
-<label>Category (Movie / K-Drama)</label>
-</div>
+<input id="category" placeholder="Category (K-Drama, C-Drama, Anime, Movie)">
 
-<div class="input-box">
-<input id="rating" type="text" required>
-<label>Rating (9.5)</label>
-</div>
+<input id="rating" placeholder="Rating (9.5)">
 
-<div class="input-box">
-<input id="image" type="text" required>
-<label>Image URL</label>
-</div>
+<input id="image" placeholder="Image URL">
 
-<div class="input-box textarea-box">
-<textarea id="desc" required></textarea>
-<label>Description</label>
-</div>
+<input id="year" placeholder="Year">
+
+<input id="episodes" placeholder="Episodes">
+
+<input id="genre" placeholder="Genre">
+
+<input id="status" placeholder="Status (Completed / Ongoing)">
+
+<input id="country" placeholder="Country">
+
+<input id="director" placeholder="Director">
+
+<input id="cast" placeholder="Cast">
+
+<textarea id="desc" placeholder="Short Description"></textarea>
+
+<textarea id="about" placeholder="Full Story / About Drama"></textarea>
 
 </div>
 
 <button class="glow-btn" onclick="addDrama()">
-➕ Add to Gen Z Hub
+➕ Add Drama
 </button>
+
+<br><br>
+
+<a href="index.html" class="back-btn">
+🏠 Back To Home
+</a>
 
 </div>
 
