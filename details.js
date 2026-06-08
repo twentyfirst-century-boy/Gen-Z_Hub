@@ -1,21 +1,24 @@
 const container = document.getElementById("details");
 
 const params = new URLSearchParams(window.location.search);
-const id = Number(params.get("id"));
+const id = parseInt(params.get("id"));
 
-const localDramas =
+let localDramas =
 JSON.parse(localStorage.getItem("dramas")) || [];
 
-const allDramas =
-localDramas.length > 0 ? localDramas : dramas;
+let allDramas =
+localDramas.length ? localDramas : dramas;
 
-const item = allDramas.find(d => d.id === id);
+const item = allDramas.find(
+d => Number(d.id) === Number(id)
+);
 
 if(!item){
 
 container.innerHTML = `
 <div style="padding:50px;text-align:center;">
 <h1>❌ Drama Not Found</h1>
+<br>
 <a href="index.html" class="back-btn">
 🏠 Back Home
 </a>
@@ -41,33 +44,39 @@ container.innerHTML = `
 <div class="meta-grid">
 
 <div>
-<h4>⭐ Rating</h4>
-<p>${item.rating || "N/A"}</p>
+⭐
+<br>
+${item.rating || "N/A"}
 </div>
 
 <div>
-<h4>📅 Year</h4>
-<p>${item.year || "N/A"}</p>
+📅
+<br>
+${item.year || "N/A"}
 </div>
 
 <div>
-<h4>🎞 Episodes</h4>
-<p>${item.episodes || "N/A"}</p>
+🎞
+<br>
+${item.episodes || "N/A"}
 </div>
 
 <div>
-<h4>🎭 Genre</h4>
-<p>${item.genre || "N/A"}</p>
+🎭
+<br>
+${item.genre || "N/A"}
 </div>
 
 <div>
-<h4>📡 Status</h4>
-<p>${item.status || "N/A"}</p>
+📡
+<br>
+${item.status || "N/A"}
 </div>
 
 <div>
-<h4>🌍 Country</h4>
-<p>${item.country || "N/A"}</p>
+🌍
+<br>
+${item.country || "N/A"}
 </div>
 
 </div>
@@ -75,9 +84,10 @@ container.innerHTML = `
 <div class="desc-box">
 
 <h2>📖 Story</h2>
+<br>
 
 <p>
-${item.about || item.description || "No Description Available"}
+${item.about || item.description || "No description available."}
 </p>
 
 </div>
@@ -85,15 +95,27 @@ ${item.about || item.description || "No Description Available"}
 <div class="extra-grid">
 
 <div>
-<strong>🎬 Director</strong>
-<br>
-${item.director || "Unknown"}
+🎬 Director
+<br><br>
+${item.director || "N/A"}
 </div>
 
 <div>
-<strong>👥 Cast</strong>
-<br>
-${item.cast || "Unknown"}
+👥 Cast
+<br><br>
+${item.cast || "N/A"}
+</div>
+
+<div>
+🎭 Category
+<br><br>
+${item.category || "N/A"}
+</div>
+
+<div>
+⭐ Rating
+<br><br>
+${item.rating || "N/A"}
 </div>
 
 </div>
@@ -112,7 +134,7 @@ onclick="toggleWatching(${item.id})">
 
 <button class="back-btn"
 onclick="toggleCompleted(${item.id})">
-✔ Completed
+✔️ Completed
 </button>
 
 <a href="index.html"
@@ -125,46 +147,89 @@ class="back-btn">
 </div>
 
 </div>
-
 `;
 }
 
-/* ===========================
-   FAVORITE
-=========================== */
+/* FAVORITE */
 
-function updateDrama(id,key){
+function toggleFavorite(id){
 
 let dramas =
 JSON.parse(localStorage.getItem("dramas")) || [];
 
-const index =
-dramas.findIndex(d=>d.id===id);
+const drama =
+dramas.find(d=>d.id===id);
 
-if(index !== -1){
+if(drama){
 
-dramas[index][key] =
-!dramas[index][key];
+drama.favorite = !drama.favorite;
 
 localStorage.setItem(
 "dramas",
 JSON.stringify(dramas)
 );
 
-alert("Updated Successfully!");
+alert(
+drama.favorite
+? "❤️ Added to Favorites"
+: "❌ Removed from Favorites"
+);
 
 }
-
 }
 
-function toggleFavorite(id){
-updateDrama(id,"favorite");
-}
+/* WATCHING */
 
 function toggleWatching(id){
-updateDrama(id,"watching");
+
+let dramas =
+JSON.parse(localStorage.getItem("dramas")) || [];
+
+const drama =
+dramas.find(d=>d.id===id);
+
+if(drama){
+
+drama.watching = !drama.watching;
+
+localStorage.setItem(
+"dramas",
+JSON.stringify(dramas)
+);
+
+alert(
+drama.watching
+? "📺 Added to Watching"
+: "❌ Removed from Watching"
+);
+
+}
 }
 
+/* COMPLETED */
+
 function toggleCompleted(id){
-updateDrama(id,"completed");
+
+let dramas =
+JSON.parse(localStorage.getItem("dramas")) || [];
+
+const drama =
+dramas.find(d=>d.id===id);
+
+if(drama){
+
+drama.completed = !drama.completed;
+
+localStorage.setItem(
+"dramas",
+JSON.stringify(dramas)
+);
+
+alert(
+drama.completed
+? "✔️ Marked Completed"
+: "❌ Removed Completed"
+);
+
+}
 }
