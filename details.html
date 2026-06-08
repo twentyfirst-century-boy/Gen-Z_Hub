@@ -1,19 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Details - Gen Z Hub</title>
+
+<title>Drama Details - Gen Z Hub</title>
+
+<meta name="theme-color" content="#070b17">
+
 <link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 </head>
 
 <body class="details-page">
 
-<div id="details"></div>
+<!-- DETAILS CONTENT -->
+<div id="details">
 
+<div style="padding:60px;text-align:center;">
+
+<h2>Loading Details...</h2>
+
+<p>Please wait...</p>
+
+</div>
+
+</div>
+
+<!-- BACK TO TOP -->
+<button id="topBtn">
+<i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<!-- SCRIPTS -->
 <script src="data.js"></script>
 <script src="details.js"></script>
+
+<script>
+
+/* BACK TO TOP */
+
+const topBtn = document.getElementById("topBtn");
+
+window.addEventListener("scroll", () => {
+
+if(window.scrollY > 300){
+
+topBtn.style.display = "block";
+
+}else{
+
+topBtn.style.display = "none";
+
+}
+
+});
+
+topBtn.addEventListener("click", () => {
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+});
+
+</script>
 
 </body>
 </html>
